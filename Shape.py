@@ -28,17 +28,17 @@ class Line(AbstractShape):
 		self.character = character
 		self.backgroundColor = backgroundColor
 
-	def draw(self, surface):
+	def draw(self, screen):
 		output = ""
 		if self.orientation == "horizontal":
 			for i in range(self.length):
 				output += formatPointToString(self.x, self.y+i, self.color, self.backgroundColor, self.character)
-			surface.output(output)
+			screen.output(output)
 			
 		else:
 			for i in range(self.length):
 				output += formatPointToString(self.x+i, self.y, self.color, self.backgroundColor, self.character)
-			surface.output(output)
+			screen.output(output)
 
 	def move(self, x, y):
 		pass
