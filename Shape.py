@@ -3,9 +3,10 @@ from abc import ABCMeta, abstractmethod
 class AbstractShape:
 	__metaclass__ = ABCMeta
 
-	def __init__(self,x,y):
+	def __init__(self,x,y,color):
 		self.x = x
 		self.y = y
+		self.color = color
 
 	@abstractmethod
 	def draw(self):
@@ -20,24 +21,21 @@ class AbstractShape:
 		pass
 
 class Line(AbstractShape):
-	def __init__(self, x, y, length, color, backgroundColor, orientation, character):
-		AbstractShape.__init__(self, x, y)
+	def __init__(self, x, y, length, color, orientation):
+		AbstractShape.__init__(self, x, y, color)
 		self.length = length
-		self.color = color
 		self.orientation = orientation
-		self.character = character
-		self.backgroundColor = backgroundColor
 
 	def draw(self, screen):
 		output = ""
 		if self.orientation == "horizontal":
 			for i in range(self.length):
-				output += formatPointToString(self.x, self.y+i, self.color, self.backgroundColor, self.character)
+				output += formatPointToString(self.x, self.y+i, self.color)
 			screen.output(output)
 			
 		else:
 			for i in range(self.length):
-				output += formatPointToString(self.x+i, self.y, self.color, self.backgroundColor, self.character)
+				output += formatPointToString(self.x+i, self.y, self.color)
 			screen.output(output)
 
 	def move(self, x, y):
@@ -46,14 +44,23 @@ class Line(AbstractShape):
 	def clear(self):
 		if self.orientation == "horizontal":
 			for i in range(self.length):
-				output += formatPointToString(self.x, self.y+i, DEFAULTBACKGROUND, DEFAULTBACKGROUND, " ")
+				output += formatPointToString(self.x, self.y+i, DEFAULTBACKGROUND)
 			surface.output(output)
 			
 		else:
 			for i in range(self.length):
-				output += formatPointToString(self.x+i, self.y, DEFAULTBACKGROUND, DEFAULTBACKGROUND, " ")
+				output += formatPointToString(self.x+i, self.y, DEFAULTBACKGROUND)
 			surface.output(output)
 
+class Rect(AbstractShape):
+	"""docstring for Rect"""
+	def __init__(self, x, y, width, height, color):
+		AbstractShape.__init__(self, x, y, color)
+		self.width = width
+		self.height = height
 
-def formatPointToString(x, y, color, backgroundColor ,character):
-	return "\033[{};{}H\033[{};{}m{}".format(x, y, color, (backgroundColor+10), character)
+
+		
+
+def formatPointToString(x, y, color):
+	return "\033[{};{}H\033[{}m{}".format(x, y, (color), " ")

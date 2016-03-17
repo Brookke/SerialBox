@@ -4,9 +4,9 @@ from Shape import *
 
 class Screen:
 
-	def __init__(self,height,width):
-		self.height = height
+	def __init__(self,width, height):
 		self.width = width
+		self.height = height
 
 	def output(self, string):
 		write(string)
