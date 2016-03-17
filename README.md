@@ -7,13 +7,13 @@ initialise the screen
 ` display = Screen(height,width) `
 
 ###Screen methods include:
-####Clear
-This as you would expect clears the entire screen in one small string vs going through every pixel one by one.
+####clear
+This as you would expect clears the entire screen in one small string vs going through every pixel one by one. 
 ```
 display.clear()
 ```
 
-####Output
+####output
 This accepts a string and then send it over serial. Not intended for use by the user.
 ```
 display.output(string)
