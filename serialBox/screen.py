@@ -1,8 +1,4 @@
-from Globals import *
-from Shape import *
-
-
-class Screen:
+class screen:
 
 	def __init__(self,width, height):
 		self.width = width
@@ -17,3 +13,4 @@ class Screen:
 
 def write(string):
 	print string
+
