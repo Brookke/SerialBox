@@ -1,10 +1,13 @@
-# SerialScreen
+# SerialBox
 This is a class that allows us to draw in ansi escape code
 
 #DOCS
+##import
+import the package
+`import serialBox`
 ##Screen
 initialise the screen
-` display = Screen(height,width) `
+` display = serialBox.screen(height,width) `
 
 ###Screen methods include:
 ####clear
@@ -22,7 +25,7 @@ display.output(string)
 ##Shape
 ###Example
 ```
-paddle1 = Line(x, y, length, color, backgroundColor, orientation, character)
+paddle1 = serialBox.line(x, y, length, color, orientation, character)
 ```
 ###Methods
 Each shape has a `draw`, `move` and `clear` method.
