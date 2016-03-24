@@ -6,8 +6,13 @@ class rect(shape):
 		self.width = width
 		self.height = height
 
-	def draw(self):
-		pass
+	def draw(self,screen):
+		output = ""
+		for i in range(self.height):
+			for j in range(self.width):
+				output += formatPointToString(self.x + i, self.y + j)
+		screen.output(output)
+
 
 	def clear(self):
 		pass
