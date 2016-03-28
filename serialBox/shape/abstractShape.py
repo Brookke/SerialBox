@@ -21,4 +21,4 @@ class abstractShape:
 		pass
 
 	def formatPointToString(self,x, y, color):
-		return "\033[{};{}H\033[{}m{}".format(y, x, (color), " ")
+		return "\033[{};{}H\033[{}m{}".format(int(y), int(x), (color), " ")
