@@ -1,3 +1,4 @@
+from serial import Serial
 import time
 class screen:
 
@@ -14,8 +15,14 @@ class screen:
 		write("\033[0m\033[2J")
 
 f = open('out.txt', 'w')
-def write(string):
-	print string
-	
-	f.write("\nline: "+string)
 
+serialPort = Serial("/dev/ttyAMA0", 115200)
+
+
+def write(string):
+	if (serialPort.isOpen() == False):
+		serialPort.open()
+
+	serialPort.write(string)
+
+	#f.write("\nline: "+string)
